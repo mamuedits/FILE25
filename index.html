@@ -10,7 +10,7 @@
         function accessFile(fileId, fileName, price) {
             if (confirm(`Accessing '${fileName}' costs ₹${price}. Continue?`)) {
                 // Redirect to UPI payment link
-                const upiId = "mamuedits@oksbi"; // Replace with your UPI ID
+                const upiId = "mamuedits-1@okhdfcbank"; // Replace with your UPI ID
                 const redirectUrl = encodeURIComponent(`http://your-domain.com/access.php?file=${fileId}`);
                 
                 const upiLink = `upi://pay?pa=${upiId}&pn=File%20Access&am=${price}&cu=INR&url=${redirectUrl}`;

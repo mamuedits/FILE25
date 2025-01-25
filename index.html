@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Access System</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script>
         // Function to handle file access and payment
         function accessFile(fileId, fileName, price) {
@@ -16,6 +17,13 @@
                 
                 window.location.href = upiLink;
             }
+            function generateQR(upiLink) {
+            document.getElementById('qrcode').innerHTML = ''; // Clear previous QR code
+            QRCode.toCanvas(document.getElementById('qrcode'), upiLink, function (error) {
+                if (error) console.error(error);
+                console.log('QR Code generated!');
+            });
+        }
         }
     </script>
     <style>
@@ -61,7 +69,7 @@
 
     <div class="container">
         <!-- File cards (replace with dynamic data if using a backend) -->
-        <div class="file-card" onclick="accessFile(1, 'File 1', 10)">
+        <div class="file-card" onclick="generateQR('upi://pay?pa=your-upi-id@upi&pn=File%20Access&am=10&cu=INR')">
             <h3>File 1</h3>
             <p>Price: ₹10</p>
         </div>
